@@ -22,7 +22,7 @@ test('Pushing an element onto the stack updates the top of the stack', async () 
     await pushButton.click();
 
     // Enter the value to be pushed onto the stack in the prompt box
-    let alert = await driver.switchTo()alert();
+    let alert = await driver.switchTo().alert();
     await alert.sendKeys("Bananer");
     await alert.accept();
 
