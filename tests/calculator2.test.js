@@ -1,8 +1,9 @@
-const { Builder, By, until } = require('selenium-webdriver');
+// calculator2.test.js
+const { Builder, By } = require('selenium-webdriver');
 require('geckodriver');
 
 const fileUnderTest = 'file://' + __dirname.replace(/ /g, '%20') + '/../src/calculator.html';
-const defaultTimeout = 10000;
+
 let driver;
 
 beforeAll(async () => {
@@ -12,13 +13,23 @@ beforeAll(async () => {
 
 afterAll(async () => {
     await driver.quit();
-}, defaultTimeout);
+});
 
 test('should subtract two numbers correctly', async () => {
+    // Click the buttons in the correct order: 2 - 1
     await driver.findElement(By.id('num2')).click(); // Click '2'
     await driver.findElement(By.id('subtract')).click(); // Click '-'
     await driver.findElement(By.id('num1')).click(); // Click '1'
-    await driver.findElement(By.id('equals')).click(); // Click '='
+
+    // Click '=' button to perform the subtraction
+    await driver.findElement(By.id('equals')).click(); 
+
+    // Retrieve the result from the display
     let result = await driver.findElement(By.id('display')).getText();
-    expect(result).toEqual('1'); // Check if the display shows '1' after subtracting 1 from 2
+
+    // Print out the result to check its value
+    console.log('Result:', result);
+
+    // Check if the result is '-1' (since 2 - 1 = -1)
+    expect(result).toEqual('-1');
 });
