@@ -1,4 +1,4 @@
-const Calculator = require('./calculator');
+const Calculator = require('../src/calculator');
 
 describe('Calculator tests', () => {
    test('add method should sum two string numbers', () => {

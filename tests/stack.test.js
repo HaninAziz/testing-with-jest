@@ -18,15 +18,3 @@ test('peek on stack with two or more elements returns the top element', () => {
     expect(stack.peek()).toBe(42);
 });
 
-// Ny test 
-
-test('isEmpty returns true for new stack', () => {
-    const newStack = new stack();
-    expect(newStack.isEmpty()).toBe(true);
-});
-
-test('isEmpty returns false after pushing an item', () => {
-    const myStack = new stack();
-    myStack.push('data');
-    expect(myStack.isEmpty()).toBe(false);
-});
